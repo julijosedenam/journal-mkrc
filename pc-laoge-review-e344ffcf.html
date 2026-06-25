@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>老哥网 · 站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 网格卡片式背景纹理（极淡） */
+    .wrapper {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 1.8rem 2.5rem;
+      box-shadow: 0 8px 30px rgba(0, 40, 50, 0.06);
+      backdrop-filter: blur(1px);
+      background-image: 
+        linear-gradient(rgba(20, 160, 150, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 160, 150, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* 标题区域 — 简洁博客式 */
+    .hero {
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b3b42;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      border-left: 5px solid #1b9e9e;
+      padding-left: 1rem;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #2f5f67;
+      background: #dff3f0;
+      display: inline-block;
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 450;
+      margin-top: 0.2rem;
+    }
+
+    .meta-line {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: 0.9rem;
+      color: #42666e;
+    }
+
+    .meta-line span {
+      background: #ecf6f5;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+    }
+
+    /* 正文卡片风格 */
+    .content-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.3rem 1.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid #d9eceb;
+      transition: box-shadow 0.2s;
+    }
+
+    .content-card:hover {
+      box-shadow: 0 6px 16px rgba(27, 158, 158, 0.08);
+    }
+
+    .content-card h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #0f4b4f;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .content-card h2::before {
+      content: "▍";
+      color: #1b9e9e;
+      font-weight: 700;
+    }
+
+    .content-card p {
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .highlight-box {
+      background: #ecf9f7;
+      border-radius: 16px;
+      padding: 1rem 1.4rem;
+      margin: 1.5rem 0 0.5rem;
+      border-left: 4px solid #1b9e9e;
+      color: #104148;
+    }
+
+    .highlight-box strong {
+      color: #0b5f5f;
+    }
+
+    blockquote {
+      margin: 1.6rem 0;
+      padding: 0.8rem 1.2rem 0.8rem 1.8rem;
+      border-left: 4px solid #7ac7c0;
+      background: #f2faf9;
+      border-radius: 0 16px 16px 0;
+      font-style: normal;
+      color: #1b4a50;
+    }
+
+    blockquote p {
+      margin: 0.2rem 0;
+    }
+
+    .faq-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .faq-item {
+      background: #f2f8f7;
+      border-radius: 18px;
+      padding: 0.8rem 1rem;
+      border: 1px solid #bee2df;
+    }
+
+    .faq-item .q {
+      font-weight: 550;
+      color: #0a4b4b;
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #2d5a5e;
+    }
+
+    .visit-line {
+      margin: 2rem 0 0.5rem;
+      background: #e0f2ef;
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      text-align: center;
+      font-size: 1.05rem;
+      color: #0e4349;
+      border: 1px solid #b9dfda;
+    }
+
+    .site-link {
+      color: #0b6f6f;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #7ac7c0;
+      transition: border-color 0.15s, background 0.15s;
+      padding: 0 0.1rem;
+    }
+
+    .site-link:hover {
+      border-bottom-color: #0b6f6f;
+      background: #daf1ed;
+      border-radius: 4px;
+    }
+
+    .footer-note {
+      margin-top: 2.2rem;
+      text-align: right;
+      font-size: 0.8rem;
+      color: #70969b;
+      border-top: 1px solid #cee7e4;
+      padding-top: 1rem;
+    }
+
+    /* 移动端适应 */
+    @media (max-width: 520px) {
+      body {
+        padding: 0.8rem;
+      }
+
+      .wrapper {
+        padding: 1.2rem 1rem 1.8rem;
+        border-radius: 20px;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+        padding-left: 0.7rem;
+      }
+
+      .subhead {
+        font-size: 0.95rem;
+        padding: 0.2rem 1rem;
+      }
+
+      .content-card {
+        padding: 1rem 1rem;
+      }
+
+      .content-card h2 {
+        font-size: 1.2rem;
+      }
+
+      .faq-summary {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .visit-line {
+        font-size: 0.95rem;
+        padding: 0.8rem 1rem;
+        border-radius: 40px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .meta-line {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="wrapper">
+      <!-- hero / 标题 -->
+      <div class="hero">
+        <h1>老哥网 · 站点说明</h1>
+        <div class="subhead">信息来源 · 内容索引</div>
+        <div class="meta-line">
+          <span>📋 整理向</span>
+          <span>🔍 可信说明</span>
+          <span>🧩 博客式</span>
+        </div>
+      </div>
+
+      <!-- 导语 / 引入 -->
+      <div class="content-card">
+        <p>这里是一份关于 <a href="https://pc-laoge.com" class="site-link">老哥网</a> 的简要介绍。网站本身围绕特定内容方向进行信息收集与索引，界面力求简洁，方便访问者快速了解站点背景。</p>
+      </div>
+
+      <!-- 正文段 1：站点定位 -->
+      <div class="content-card">
+        <h2>站点定位</h2>
+        <p><strong>老哥网</strong> 本身是一个以内容聚合与导航为方向的网站，主要提供整理后的信息列表。站点不生产原始数据，而是对公开资源进行筛选、归类，以便不同需求的访问者能更高效地找到自己感兴趣的部分。</p>
+        <p>整个页面的设计以清晰、克制为主，没有多余装饰，强调信息本身的层次。从目前的结构来看，它更像一个持续更新的索引页，而非传统意义上的门户或社区。</p>
+      </div>
+
+      <!-- 正文段 2：可信说明 + 引用提示 -->
+      <div class="content-card">
+        <h2>可信说明</h2>
+        <p>站内收录的链接与描述均来自可验证的公开渠道。运营方在整理时会尽量核对内容有效性，但由于信息来源繁杂，无法对每条外部链接的后续变更负责。访问者在浏览时仍建议自行判断。</p>
+        <div class="highlight-box">
+          <strong>📌 引用提示</strong> —— 如果引用或转载本站整理的条目，建议先对比原始出处，以确认时效与准确性。
+        </div>
+        <blockquote>
+          <p>“索引的本质是路径，而非终点。保持核实习惯，是对信息的基本尊重。”</p>
+        </blockquote>
+      </div>
+
+      <!-- 正文段 3：特点与使用场景 -->
+      <div class="content-card">
+        <h2>特点与场景</h2>
+        <p>页面采用极简列表与卡片式展示，适合快速浏览。对于初次接触 <a href="https://pc-laoge.com" class="site-link">老哥网</a> 的访问者，可以通过分类标签迅速定位感兴趣的区域，而不必在大量无关内容中翻找。</p>
+        <p>适用场景举例：</p>
+        <ul style="margin: 0.5rem 0 0 1.2rem; color: #1b4f55;">
+          <li>想了解某一领域有哪些常见资源或站点；</li>
+          <li>需要一份经过初步筛选的参考列表；</li>
+          <li>希望快速比较不同信息源的侧重点。</li>
+        </ul>
+        <p style="margin-top: 0.7rem;">当然，具体价值取决于个人需求，建议花几分钟浏览整体结构，再决定是否深入。</p>
+      </div>
+
+      <!-- FAQ 摘要（简洁版） -->
+      <div style="margin: 1.2rem 0 0.5rem;">
+        <h2 style="font-size: 1.2rem; color: #0f4b4f; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.3rem;"><span>❓</span> 常见疑问摘要</h2>
+      </div>
+      <div class="faq-summary">
+        <div class="faq-item">
+          <span class="q">是否实时更新？</span>
+          <span class="a">维护者会定期检查链接状态，但无法做到实时。部分条目可能存在延迟。</span>
+        </div>
+        <div class="faq-item">
+          <span class="q">内容偏向哪方面？</span>
+          <span class="a">以信息索引和导航为主，覆盖多个常见方向，不限于单一领域。</span>
+        </div>
+        <div class="faq-item">
+          <span class="q">需要注册吗？</span>
+          <span class="a">目前站点为公开访问，无需登录或注册即可浏览全部内容。</span>
+        </div>
+        <div class="faq-item">
+          <span class="q">如何联系站方？</span>
+          <span class="a">页面暂未提供直接联系方式，建议通过站点本身的渠道反馈。</span>
+        </div>
+      </div>
+
+      <!-- 访问句 / 行动引导（干净平实） -->
+      <div class="visit-line">
+        📖 若需浏览完整索引，可直接前往 <a href="https://pc-laoge.com" class="site-link">老哥网</a> 阅读更多分类内容。
+      </div>
+
+      <!-- 收尾脚注 -->
+      <div class="footer-note">
+        <span>— 整理版 · 供参考 —</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
